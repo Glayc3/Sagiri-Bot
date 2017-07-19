@@ -7,6 +7,54 @@ sagiri_bot = Bot(command_prefix=".")
 glayce_mention = "<@274250969322356747>"
 oban_mention = "<@332608659609747456>"
 
+helpTitle = "Sagiri will help you!!"
+debugTitle = "Debug menu" 
+helpText = """```         funky things i can do
+ 
+         Hey - Caps don't matter
+```
+```
+              **Random Chat**
+```
+-hello / yo / hi / hey / waddup / wassup
+-speak Python
+-what languages can you speak @sagiri-bot?
+-is Glayce cool?
+-who are you @sagiri-bot?
+-what is the answer to life, the universe and everything?
+-who shot first
+-u mad @sagiri-bot?
+-puns pls
+-encouragement pls
+-i love you @sagiri-bot
+```
+                  **Memes**
+```
+-it's Wednesday my dudes
+-free robux/roblox hacks/how to watch big time rush for free
+-welcome to my mine
+-understandable
+-cracking a cold one with the boys/crack a cold one with the boys
+-send me some fire mixtapes @sagiri-bot
+```
+                  **NSFW**
+```
+-hentai please
+-fuck me @sagiri-bot
+```
+          **Other/Unimplemented**
+```
+-ping
+-help me @sagiri-bot
+-info @sagiri-bot
+"""
+debugText ="""-send all mixtapes @sagiri-bot
+-mixtape count
+-pun count
+-debug menu
+-upcdowncleftcrighta
+"""
+helpColour = 0xFFC5FE
 puns=[]
 mixtapes=[]
 now = datetime.datetime.now()
@@ -17,45 +65,59 @@ async def on_message(message):
     mesg_lower = message.content.lower()
     auth_mention = message.author.mention
 
+    if mesg_lower == "help me " + sagiri_bot.user.mention:
+        helpme = discord.Embed(title=helpTitle, description=helpText, colour=helpColour)
+        await sagiri_bot.send_message(message.channel, embed=helpme)
 
-    if mesg_lower in ["hello", "yo", "hi", "hey"] and not message.author.bot:
+    elif mesg_lower == "debug menu":
+        author = str(message.author)
+        if author.lower() == "glayce#2155":
+            debugmenu = discord.Embed(title=debugTitle, description=debugText, colour=helpColour)
+            await sagiri_bot.send_message(message.channel, embed=debugmenu)
+        else:
+            await sagiri_bot.send_message(message.channel, "you're not glayce scrub")
+
+    elif mesg_lower in ["hello","yo","hi","hey"] and not message.author.bot:
 
         reply = random.choice(["wUS pOPPING jIMBO???","ayy","ey","hi","ayop","hello"]) + " " + auth_mention
 
         await sagiri_bot.send_message(message.channel, reply)
 
     elif mesg_lower == "waddup" or mesg_lower == "wassup":
-        await sagiri_bot.send_message(message.channel, "The ceiling")##
+        await sagiri_bot.send_message(message.channel, "The ceiling")
 
     elif mesg_lower == "speak python":
         await sagiri_bot.send_message(message.channel,"sorry if my python is a bit rusty\nit's been a while\nprint \'hello world\'")
 
-    elif mesg_lower.startswith( "what languages can you speak " + sagiri_bot.user.mention ):
+    elif mesg_lower.startswith("what languages can you speak " + sagiri_bot.user.mention):
         await sagiri_bot.send_message(message.channel, "while i was raised in python, alas I only know english\nblame " + glayce_mention)
 
     elif mesg_lower == "is glayce cool?":
         await sagiri_bot.send_message(message.channel,"glayce is a gay idiot also here's his channel\nhttps://www.youtube.com/channel/UCRyRCqipLrzqmMBBMyfBHvQ/featured")
 
-    elif mesg_lower.startswith( "who are you " + sagiri_bot.user.mention ):
+    elif mesg_lower.startswith("who are you " + sagiri_bot.user.mention):
         await sagiri_bot.send_message(message.channel, "a higher intellegence who has descended onto the world as a guardian angel though reincarnated as a discord bot")
 
-    elif mesg_lower.startswith( "what is the answer to life, the universe and everything" ):
+    elif mesg_lower.startswith("what is the answer to life, the universe and everything"):
         await sagiri_bot.send_message(message.channel,"42")
 
-    elif mesg_lower.startswith( "who shot first" ):
+    elif mesg_lower.startswith("who shot first"):
         await sagiri_bot.send_message(message.channel,"say han or i'll be the first to shoot here buddy")
 
-    elif mesg_lower.startswith( "you mad " + sagiri_bot.user.mention ):
+    elif mesg_lower.startswith("you mad " + sagiri_bot.user.mention):
         await sagiri_bot.send_message(message.channel,"um no\nhttp://i.imgur.com/zGgTrZW.gif")
 
     elif mesg_lower == "puns pls":
-        await sagiri_bot.send_message(message.channel,puns[random.randint(0,len(puns)-1)0)
+        await sagiri_bot.send_message(message.channel,puns[random.randint(0,len(puns)-1)])
 
     elif mesg_lower == "send me some fire mixtapes":
-        await sagiri_bot.send_message(message.channel,mixtapes[random.randint(0,len(mixtapes)-1)0)
+        await sagiri_bot.send_message(message.channel,mixtapes[random.randint(0,len(mixtapes)-1)])
 
     elif mesg_lower == "encouragement pls":
-        pass #same as above
+        await sagiri_bot.send_message(message.channel, "https://pics.me.me/if-u-feel-sad-remember-that-the-world-is-4-5-19131844.png")
+
+    elif mesg_lower.startswith("i love you "+ sagiri_bot.user.mention):
+        await sagiri_bot.send_message(message.channel, "https://cdn.ram.moe/BJjSz0zxx.gif")
 
     elif mesg_lower == "it's wednesday my dudes":
         if now.strftime("%A").lower() == "wednesday":
