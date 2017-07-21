@@ -8,7 +8,8 @@ glayce_mention = "<@274250969322356747>"
 oban_mention = "<@332608659609747456>"
 
 helpTitle = "Sagiri will help you!!"
-debugTitle = "Debug menu" 
+debugTitle = "Debug menu"
+infoTitle = "Info"
 helpText = """```         funky things i can do
  
          Hey - Caps don't matter
@@ -16,7 +17,8 @@ helpText = """```         funky things i can do
 ```
               **Random Chat**
 ```
--hello / yo / hi / hey / waddup / wassup
+-hello / yo / hi / hey /
+-waddup / wassup
 -speak Python
 -what languages can you speak @sagiri-bot?
 -is Glayce cool?
@@ -48,16 +50,23 @@ helpText = """```         funky things i can do
 -help me @sagiri-bot
 -info @sagiri-bot
 """
-debugText ="""-send all mixtapes @sagiri-bot
--mixtape count
--pun count
--debug menu
--upcdowncleftcrighta
+debugText = """-send all mixtapes @sagiri-bot"""
+infoText = """``` ***Sagiri-Bot***```
+**Made by Glayce**
+*Special thanks to ibby*
+
+```
+Links
+```
+[Youtube](https://www.youtube.com/channel/UCRyRCqipLrzqmMBBMyfBHvQ)
+[Github](https://github.com/Glayc3)
 """
 helpColour = 0xFFC5FE
+
 puns=[]
 mixtapes=[]
 now = datetime.datetime.now()
+
 
 @sagiri_bot.event
 async def on_message(message):
@@ -65,17 +74,23 @@ async def on_message(message):
     mesg_lower = message.content.lower()
     auth_mention = message.author.mention
 
+
     if mesg_lower == "help me " + sagiri_bot.user.mention:
-        helpme = discord.Embed(title=helpTitle, description=helpText, colour=helpColour)
-        await sagiri_bot.send_message(message.channel, embed=helpme)
+        helpme = discord.Embed(title = helpTitle, description = helpText, colour = helpColour)
+        await sagiri_bot.send_message(message.channel, embed = helpme)
 
     elif mesg_lower == "debug menu":
         author = str(message.author)
         if author.lower() == "glayce#2155":
-            debugmenu = discord.Embed(title=debugTitle, description=debugText, colour=helpColour)
+            debugmenu = discord.Embed(title = debugTitle, description = debugText, colour = helpColour)
             await sagiri_bot.send_message(message.channel, embed=debugmenu)
         else:
             await sagiri_bot.send_message(message.channel, "you're not glayce scrub")
+
+    elif mesg_lower == "info " + sagiri_bot.user.mention:
+        infobox = discord.Embed(title = infoTitle, description = infoText, colour = helpColour)
+        await sagiri_bot.send_message(message.channel, embed = infobox)
+
 
     elif mesg_lower in ["hello","yo","hi","hey"] and not message.author.bot:
 
@@ -110,9 +125,6 @@ async def on_message(message):
     elif mesg_lower == "puns pls":
         await sagiri_bot.send_message(message.channel,puns[random.randint(0,len(puns)-1)])
 
-    elif mesg_lower == "send me some fire mixtapes":
-        await sagiri_bot.send_message(message.channel,mixtapes[random.randint(0,len(mixtapes)-1)])
-
     elif mesg_lower == "encouragement pls":
         await sagiri_bot.send_message(message.channel, "https://pics.me.me/if-u-feel-sad-remember-that-the-world-is-4-5-19131844.png")
 
@@ -146,3 +158,25 @@ async def on_message(message):
 
     elif mesg_lower == "understandable":
         await sagiri_bot.send_message(message.channel,"have a great day")
+
+    elif mesg_lower == "crack a cold one with the boys" or mesg_lower == "cracking a cold one with th boys":
+        await sagiri_bot.send_message(message.channel,"is this enough?\nhttps://images-na.ssl-images-amazon.com/images/I/81vK-0Gd6IL._SX522_.jpg")
+
+    elif mesg_lower == "send me some fire mixtapes " +sagiri_bot.user.mention:
+        await sagiri_bot.send_message(message.channel,mixtapes[random.randint(0,len(mixtapes)-1)])
+
+    elif mesg_lower == "hentai please" or mesg_lower == "porn please":
+        await sagiri_bot.send_message(message.channel,"https://cdn.ram.moe/ryWB210zgl.png")
+
+    elif mesg_lower == "fuck me " + sagiri_bot.user.mention:
+        await sagiri_bot.send_message(message.channel,"to start, insert your penis into the dvd drive")
+
+    elif mesg_lower == "ping":
+        ping_message = [
+            "pong :)",
+            "what? did you think I could ping?",
+            "honestly, you expect too much from " + glayce_mention
+            ]
+        for line in ping_message:
+            await sagiri_bot.send_message(message.channel, line)
+            await asyncio.sleep(1)
