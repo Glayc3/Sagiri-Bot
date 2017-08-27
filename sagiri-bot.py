@@ -1,7 +1,7 @@
 import discord, asyncio, random, importlib, datetime
 from discord.ext.commands import Bot
 from discord.ext import commands
-sagiri_bot = Bot(command_prefix=".")
+sagiri_bot = Bot(command_prefix = ".")
 
 
 glayce_mention = "<@274250969322356747>"
@@ -17,7 +17,7 @@ helpText = """```         funky things i can do
 ```
               **Random Chat**
 ```
--hello / yo / hi / hey /
+-hello / yo / hi / hey
 -waddup / wassup
 -speak Python
 -what languages can you speak @sagiri-bot?
@@ -38,6 +38,7 @@ helpText = """```         funky things i can do
 -understandable
 -cracking a cold one with the boys/crack a cold one with the boys
 -send me some fire mixtapes @sagiri-bot
+-roast me @sagiri-bot
 ```
                   **NSFW**
 ```
@@ -65,6 +66,8 @@ helpColour = 0xFFC5FE
 
 puns=[]
 mixtapes=[]
+roasts = []
+
 now = datetime.datetime.now()
 
 
@@ -164,12 +167,16 @@ async def on_message(message):
 
     elif mesg_lower == "send me some fire mixtapes " +sagiri_bot.user.mention:
         await sagiri_bot.send_message(message.channel,mixtapes[random.randint(0,len(mixtapes)-1)])
+    elif mesg_lower == "roast me " + sagiri_bot.user.mention:
+        await sagiri_bot.send_message(message.channel, roasts[(random.randint(0, len(roasts)-1))]+ " " + auth_mention)
 
     elif mesg_lower == "hentai please" or mesg_lower == "porn please":
         await sagiri_bot.send_message(message.channel,"https://cdn.ram.moe/ryWB210zgl.png")
 
     elif mesg_lower == "fuck me " + sagiri_bot.user.mention:
         await sagiri_bot.send_message(message.channel,"to start, insert your penis into the dvd drive")
+        msg = await sagiri_bot.wait_for_message(author = message.author, content= "it's stuck")
+        await sagiri_bot.send_message(message.channel,"good")
 
     elif mesg_lower == "ping":
         ping_message = [
@@ -180,3 +187,6 @@ async def on_message(message):
         for line in ping_message:
             await sagiri_bot.send_message(message.channel, line)
             await asyncio.sleep(1)
+
+
+sagiri_bot.run("TOKEN HERE")
