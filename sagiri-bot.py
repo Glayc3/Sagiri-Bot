@@ -43,7 +43,6 @@ helpText = """```         funky things i can do
                   **NSFW**
 ```
 -hentai please
--fuck me @sagiri-bot
 ```
           **Other/Unimplemented**
 ```
@@ -118,7 +117,7 @@ async def on_message(message):
 
     elif mesg_lower.startswith("what is the answer to life, the universe and everything"):
         await sagiri_bot.send_message(message.channel,"42")
-
+o
     elif mesg_lower.startswith("who shot first"):
         await sagiri_bot.send_message(message.channel,"say han or i'll be the first to shoot here buddy")
 
@@ -128,7 +127,7 @@ async def on_message(message):
     elif mesg_lower == "puns pls":
         await sagiri_bot.send_message(message.channel,puns[random.randint(0,len(puns)-1)])
 
-    elif mesg_lower == "encouragement pls":
+     elif mesg_lower == "encouragement pls":
         await sagiri_bot.send_message(message.channel, "https://pics.me.me/if-u-feel-sad-remember-that-the-world-is-4-5-19131844.png")
 
     elif mesg_lower.startswith("i love you "+ sagiri_bot.user.mention):
@@ -172,11 +171,6 @@ async def on_message(message):
 
     elif mesg_lower == "hentai please" or mesg_lower == "porn please":
         await sagiri_bot.send_message(message.channel,"https://cdn.ram.moe/ryWB210zgl.png")
-
-    elif mesg_lower == "fuck me " + sagiri_bot.user.mention:
-        await sagiri_bot.send_message(message.channel,"to start, insert your penis into the dvd drive")
-        msg = await sagiri_bot.wait_for_message(author = message.author, content= "it's stuck")
-        await sagiri_bot.send_message(message.channel,"good")
 
     elif mesg_lower == "ping":
         ping_message = [
