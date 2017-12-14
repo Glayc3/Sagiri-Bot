@@ -110,7 +110,7 @@ async def on_message(message):
         await sagiri_bot.send_message(message.channel, "while i was raised in python, alas I only know english\nblame " + glayce_mention)
 
     elif mesg_lower == "is glayce cool?":
-        await sagiri_bot.send_message(message.channel,"glayce is a gay idiot also here's his channel\nhttps://www.youtube.com/channel/UCRyRCqipLrzqmMBBMyfBHvQ/featured")
+        await sagiri_bot.send_message(message.channel,"glayce is a gay idiot also here's his channel\nhttps://www.youtube.com/c/glayce")
 
     elif mesg_lower.startswith("who are you " + sagiri_bot.user.mention):
         await sagiri_bot.send_message(message.channel, "a higher intellegence who has descended onto the world as a guardian angel though reincarnated as a discord bot")
