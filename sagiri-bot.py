@@ -58,7 +58,7 @@ infoText = """``` ***Sagiri-Bot***```
 ```
 Links
 ```
-[Youtube](https://www.youtube.com/channel/UCRyRCqipLrzqmMBBMyfBHvQ)
+[Youtube](https://www.youtube.com/c/glayce)
 [Github](https://github.com/Glayc3)
 """
 helpColour = 0xFFC5FE
